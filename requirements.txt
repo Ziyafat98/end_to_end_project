@@ -11,3 +11,5 @@ nbformat
 openmeteo-requests
 requests-cache 
 retry_requests
+sqlalchemy
+dotenv
