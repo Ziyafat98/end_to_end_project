@@ -181,9 +181,11 @@ if __name__ == "__main__":
             kwargs=dict(model=model)
         )
 
-    # Nəticəni göstər
     if st.session_state["pred"] is not None:
         if st.session_state["days_option"] == "Specific day":
             st.subheader(f"Predicted Sales for {st.session_state['month']}/{st.session_state['day']}: {st.session_state['pred']}")
         else:
             st.subheader(f"Total Predicted Sales for Month {st.session_state['month']}: {st.session_state['pred']}")
+
+
+
