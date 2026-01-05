@@ -188,4 +188,65 @@ if __name__ == "__main__":
             st.subheader(f"Total Predicted Sales for Month {st.session_state['month']}: {st.session_state['pred']}")
 
 
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+from joblib import load
 
+# ---------------- LOAD DATA ----------------
+
+st.title("📈 Sales Trend with Predicted End")
+
+# ====== LOAD DATA ======
+@st.cache_data
+def load_real_data():
+    df = pd.read_excel("sales_merged.xlsx")
+    df["date"] = pd.to_datetime(df["date"])
+    return df
+
+real_df = load_real_data()
+
+# ====== LOAD MODEL ======
+@st.cache_resource
+def load_model():
+    model = load("model_new.saleslib")
+    return model
+
+model = load_model()
+
+# ====== PREDICT ======
+X = real_df[["year", "month_num", "day_num", "temperature_2m_mean", "store_id"]]
+real_df["predicted_sales"] = model.predict(X)
+
+# ===== STREAMLIT DÜYMƏLƏR =====
+store = st.selectbox("Store seç", real_df["store_id"].unique())
+year = st.selectbox("İl seç", real_df["year"].unique())
+
+plot_df = real_df[(real_df["store_id"] == store) & (real_df["year"] == year)]
+plot_df = plot_df.sort_values("date").reset_index(drop=True)
+plot_df["month"] = plot_df["date"].dt.strftime("%b")
+
+# ===== SALES VƏ PREDICT DİZİLƏRİ =====
+sales = plot_df["total_sales"].tolist()
+pred = plot_df["predicted_sales"].tolist()
+months = plot_df["month"].tolist()
+
+# ===== QIRIQ-QIRIQ PREDICT XƏTT =====
+predict_start = -3  # Son 3 ay predict kimi göstərilsin
+
+fig, ax = plt.subplots(figsize=(10,5))
+
+# REAL XƏTT
+ax.plot(months[:predict_start], sales[:predict_start], color="blue", linewidth=2, label="Sales")
+
+# SON HİSSƏ – PREDICT QIRIQ XƏTT
+ax.plot(months[predict_start-1:], pred[predict_start-1:], color="orange",
+        linewidth=2, linestyle=(0, (5, 5)), label="Predicted")  # (dash pattern)
+
+ax.set_xlabel("Month")
+ax.set_ylabel("Sales")
+ax.set_title(f"Store {store} Sales Trend – {year}")
+ax.legend()
+ax.grid(True)
+
+st.pyplot(fig)
