@@ -1,10 +1,10 @@
 # Result
-## Aylıq dəyişikliklər satışlara necə təsir göstərir?
+# ❓ Sual: Aylıq dəyişikliklər satışlara necə təsir göstərir?
 Aylıq analiz göstərir ki, fevral ayında satışlarda azalma müşahidə olunmuşdur.
 Mart ayından etibarən satışlar artım trendinə keçmiş, mart–may ayları satışların ən güclü olduğu dövr kimi seçilmişdir.
 İyun ayında isə artım davam etsə də, daha stabil satış fazası müşahidə olunur.
 
-##Günün hansı saatlarında satışlar daha yüksək olur?
+# ❓ Sual: Günün hansı saatlarında satışlar daha yüksək olur?
 Saatlıq analiz göstərir ki, satışlar səhər saatlarından başlayaraq 7–10 aralığında artım göstərir.
 Ən yüksək satış isə saat 10-da qeydə alınmışdır.
 Bu, günün ilk saatlarının satış baxımından daha aktiv olduğunu göstərir.
@@ -40,5 +40,10 @@ Hell’s Kitchen (236,511.17, 71,737), Astoria (232,243.91, 70,991) və Lower Ma
 
 ## Nəticə / Insight:
 Coffee və Tea bütün mağazalarda əsas gəlir mənbəyidir: Hell’s Kitchen (Coffee: 91,222.65, Tea: 64,701.30), Astoria (Coffee: 89,744.30, Tea: 67,839.90) və Lower Manhattan (Coffee: 88,985.50, Tea: 63,864.75). Bakery və Drinking Chocolate orta səviyyədə satış gətirir, Flavours və Packaged Chocolate isə bütün mağazalarda minimal performans göstərir. Bu nəticə göstərir ki, **mağazalarda kateqoriya strukturu oxşardır və biznes üçün prioritet kateqoriyalar Coffee və Tea-dir**, digər kateqoriyalar isə əlavə marketinq və strategiya dəstəyi tələb edə bilər.
+
+# ❓ Sual: Hava şəraiti (orta temperatur) satışlara nə dərəcədə təsir göstərir?
+
+## Nəticə / Insight:
+Satışlar hava datası ilə birləşdirilərək Random Forest modeli qurulmuş və feature importance analizi aparılmışdır. Model nəticələrinə əsasən satışlara təsir edən əsas faktorlar ardıcıllıqla **month_num**, **day_num**, **temperature_2m_mean** və **store_id** olmuşdur. Vizualda açıq şəkildə görünür ki, **ay faktoru satışlara ən güclü təsiri göstərir**, gün faktoru ikinci yerdədir. Orta temperatur satışlara **müsbət, lakin mövsümi faktorlarla müqayisədə daha zəif təsir edir**. Bu nəticə göstərir ki, satışlar təkcə hava şəraitindən deyil, əsasən **mövsümi davranış və zaman faktorlarından** asılıdır, lakin temperatur satış proqnozlaşdırılmasında köməkçi dəyişən kimi dəyər yaradır.
 
 
