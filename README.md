@@ -92,9 +92,9 @@ Visual insights were generated using Matplotlib and Seaborn to answer the follow
 
 ### **Machine Learning**
 
-- Coffee sales data and daily weather data are retrieved from a Dockerized MySQL database.  
-- A Random Forest model is built to predict daily sales.
-- The model helps explore the relationship between weather conditions and sales performance.
+- Coffee sales and daily weather data are retrieved from a Dockerized MySQL database.  
+- A Random Forest model is built to predict daily sales and analyze feature importance.  
+- Results show that temperature has a positive impact on sales, but its effect is weaker compared to seasonal factors.
 
 ---
 
