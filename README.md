@@ -100,8 +100,8 @@ Visual insights were generated using Matplotlib and Seaborn to answer the follow
 
 ### **Streamlit Dashboard**
 
-- All insights and results are presented in an interactive **Streamlit dashboard**
-You can explore the interactive sales prediction app here: 
+- All insights and results are presented in an interactive **Streamlit                dashboard**                                              
+You can explore the interactive sales prediction app here:                              
 [Launch Streamlit App](https://endtoendprojectpython-b6g9bagcyatdxrmhcshjcz.streamlit.app/)
 
 
